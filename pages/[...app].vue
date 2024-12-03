@@ -7,7 +7,7 @@
         page title:
         {{ content?.data?.title || 'Unpublished' }}
       </div>
-      <RenderContent
+      <Content
         model="page"
         :content="content"
         :api-key="BUILDER_PUBLIC_API_KEY"
@@ -19,12 +19,12 @@
 </template>
 
 <script setup>
-import { RenderContent, getContent, isPreviewing } from '@builder.io/sdk-vue';
+import { Content, fetchOneEntry, isPreviewing } from "@builder.io/sdk-vue";
 
 //import HelloWorldComponent from './components/HelloWorld.vue';
 //
 //// Register your Builder components
-//const REGISTERED_COMPONENTS = [
+const REGISTERED_COMPONENTS = [
 //  {
 //    component: HelloWorldComponent,
 //    name: 'MyFunComponent',
@@ -37,7 +37,7 @@ import { RenderContent, getContent, isPreviewing } from '@builder.io/sdk-vue';
 //      },
 //    ],
 //  },
-//];
+];
 
 // TODO: enter your public API key
 const BUILDER_PUBLIC_API_KEY = 'f1a790f8c3204b3b8c5c1795aeac4660'; // ggignore
@@ -46,7 +46,7 @@ const route = useRoute();
 
 // fetch builder content data
 const { data: content } = await useAsyncData('builderData', () =>
-  getContent({
+  fetchOneEntry({
     model: 'page',
     apiKey: BUILDER_PUBLIC_API_KEY,
     userAttributes: {

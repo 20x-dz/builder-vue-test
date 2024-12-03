@@ -10,9 +10,12 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@builder.io/sdk-vue": "^0.11.3",
-    "nuxt": "^3.9.3",
+    "@builder.io/sdk-vue": "^3.0.0",
+    "nuxt": "^3.14.1592",
     "vue": "^3.4.14",
     "vue-router": "^4.2.5"
+  },
+  "overrides": {
+    "unimport": "3.13.4"
   }
 }
